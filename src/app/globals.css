@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+/* Territorio · cartographic, warm-technical.
+ * Light "paper" is the lead theme; dark follows the system or the toggle (data-theme on <html>).
+ * Every color is a token; components use the Tailwind names mapped in @theme below. */
+:root {
+  --paper: oklch(97.5% 0.008 120);
+  --surface: oklch(99.3% 0.004 120);
+  --contour: oklch(86% 0.03 150);
+  --ink: oklch(28% 0.08 258);
+  --ink-2: oklch(46% 0.07 255);
+  --muted: oklch(52% 0.025 200);
+  --rule: oklch(86% 0.02 160);
+  --route: oklch(52% 0.13 152);
+  --route-bg: oklch(93% 0.045 152);
+  --line-f: oklch(58% 0.09 245);
+  --dev: oklch(70% 0.14 70);
+  --water: oklch(92% 0.03 230);
+  --stamp: oklch(53% 0.19 28);
+  --on-dev: oklch(28% 0.08 258); /* text on the ochre line badge, dark in both themes */
+  --logo-plate: oklch(22% 0.02 260); /* The King Shine logo has white lettering: always on dark */
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: oklch(21% 0.025 200);
+    --surface: oklch(24% 0.028 200);
+    --contour: oklch(31% 0.035 170);
+    --ink: oklch(93% 0.02 120);
+    --ink-2: oklch(80% 0.05 240);
+    --muted: oklch(72% 0.025 200);
+    --rule: oklch(45% 0.03 190);
+    --route: oklch(76% 0.14 152);
+    --route-bg: oklch(31% 0.05 152);
+    --line-f: oklch(74% 0.09 245);
+    --dev: oklch(80% 0.13 78);
+    --water: oklch(28% 0.04 230);
+    --stamp: oklch(70% 0.17 28);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: oklch(21% 0.025 200);
+  --surface: oklch(24% 0.028 200);
+  --contour: oklch(31% 0.035 170);
+  --ink: oklch(93% 0.02 120);
+  --ink-2: oklch(80% 0.05 240);
+  --muted: oklch(72% 0.025 200);
+  --rule: oklch(45% 0.03 190);
+  --route: oklch(76% 0.14 152);
+  --route-bg: oklch(31% 0.05 152);
+  --line-f: oklch(74% 0.09 245);
+  --dev: oklch(80% 0.13 78);
+  --water: oklch(28% 0.04 230);
+  --stamp: oklch(70% 0.17 28);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-contour: var(--contour);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
+  --color-route: var(--route);
+  --color-route-bg: var(--route-bg);
+  --color-line-f: var(--line-f);
+  --color-dev: var(--dev);
+  --color-water: var(--water);
+  --color-stamp: var(--stamp);
+  --color-logo-plate: var(--logo-plate);
+  --font-display: var(--font-overpass), "Arial", sans-serif;
+  --font-serif: var(--font-source-serif), Georgia, serif;
+  --font-mono: var(--font-overpass-mono), ui-monospace, monospace;
+  --ease-out-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+:root { --header-h: 3.5rem; }
+html { overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 1rem); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  overflow-x: clip;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+:focus-visible { outline: 2px solid var(--route); outline-offset: 3px; }
+::selection { background: var(--route-bg); color: var(--ink); }
+h1, h2, h3 { text-wrap: balance; }
+
+/* Small mono label used across the site */
+.legend { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+
+/* Hero lines rise from a mask on first paint (CSS only: no JS needed, no invisible LCP). */
+.rise { display: block; overflow: hidden; padding-bottom: 0.06em; }
+.rise > span { display: inline-block; }
+@media (prefers-reduced-motion: no-preference) {
+  .rise > span { animation: rise 900ms var(--ease-out-soft) both; }
+  .rise:nth-child(2) > span { animation-delay: 110ms; }
+  .rise:nth-child(3) > span { animation-delay: 220ms; }
+}
+@keyframes rise { from { transform: translateY(105%); } }
+
+/* Card backgrounds: the same contour drift as the hero, much softer */
+.contour-drift > * { transform-box: fill-box; transform-origin: center; }
+@media (prefers-reduced-motion: no-preference) {
+  .contour-drift > * { animation: drift 9s ease-in-out infinite alternate; }
+  .contour-drift > :nth-child(2) { animation-duration: 11s; animation-delay: -3s; }
+  .contour-drift > :nth-child(3) { animation-duration: 13s; animation-delay: -6s; }
+}
+@keyframes drift {
+  0% { transform: rotate(-1.5deg) scale(0.985, 1.01); }
+  100% { transform: rotate(1.5deg) scale(1.015, 0.99); }
+}
+
+/* Card maps are always alive (also on touch screens, where there is no hover) */
+.pulse-ring { transform-origin: center; transform-box: fill-box; opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .pulse-ring { animation: ring 1.8s var(--ease-out-soft) infinite; }
+  .sat-line { animation: dash 1.2s linear infinite; }
+}
+@keyframes ring { from { transform: scale(0.6); opacity: 0.9; } to { transform: scale(2.4); opacity: 0; } }
+@keyframes dash { to { stroke-dashoffset: -16; } }
+
+/* Transit map text */
+.metro text { font-family: var(--font-display); fill: var(--ink); }
