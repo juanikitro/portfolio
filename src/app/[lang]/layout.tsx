@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { Overpass, Overpass_Mono, Source_Serif_4 } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/next";
 import { Providers } from "@/components/Providers";
 import { getDictionary } from "@/content";
@@ -35,6 +36,9 @@ export const viewport: Viewport = {
   ],
 };
 
+// Google Analytics only runs on production deploys, so local and preview visits stay out of the data.
+const GA_ID = process.env.VERCEL_ENV === "production" ? "G-S38VY0DW86" : undefined;
+
 // Applies a stored theme choice before first paint, so a returning visitor never sees the wrong theme flash.
 const themeScript = `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
 
@@ -55,6 +59,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
       <body>
         <Providers>{children}</Providers>
         <Analytics />
+        {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 "use client";
 
-import { track } from "@vercel/analytics";
 import { useState } from "react";
+import { trackClick } from "./TrackedLink";
 
 // On touch devices the mailto opens the mail app. With a mouse, a mailto often opens nothing useful,
 // so the click copies the address instead and says so.
@@ -9,7 +9,7 @@ export function EmailButton({ email, label, copied, className, lang }: { email: 
   const [done, setDone] = useState(false);
 
   async function onClick(e: React.MouseEvent<HTMLAnchorElement>) {
-    track("email", { from: "contact", lang });
+    trackClick("email", { from: "contact", lang });
     if (matchMedia("(pointer: coarse)").matches) return; // let the mailto through
     e.preventDefault();
     try {
