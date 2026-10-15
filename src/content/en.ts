@@ -22,7 +22,7 @@ export const en: Dictionary = {
     home: "Home",
   },
   hero: {
-    lines: ["The system grows.", "Requirements change.", "I make it work."],
+    lines: ["The system grows.", "Requirements change every week.", "I make it work."],
     lede: "I'm Juani, a backend engineer from Argentina.\nOpen to remote backend, full-stack or product engineering roles.",
     sub: "Since November 2024 I've led the team behind SISOC, used by ~750 government staff.",
     places: { sisoc: "Government platform - I lead it", shine: "My own SaaS - built alone" },
@@ -182,7 +182,6 @@ export const en: Dictionary = {
       release: "release: every Thursday",
       checks: "CI",
       delivery: "Delivery",
-      scrollHint: "Swipe to follow the change to production →",
       stages: [
         { name: "lint", note: "black, pylint, djlint, encoding" },
         { name: "tests", note: "smoke + pytest, 75% coverage gate" },

@@ -22,7 +22,7 @@ export const es: Dictionary = {
     home: "Inicio",
   },
   hero: {
-    lines: ["El sistema crece.", "Los requerimientos cambian.", "Yo lo hago funcionar."],
+    lines: ["El sistema crece.", "Los requerimientos cambian cada semana.", "Yo lo hago funcionar."],
     lede: "Soy Juani, backend engineer de Argentina.\nAbierto a roles remotos de ingeniería backend, full-stack o de producto.",
     sub: "Desde noviembre de 2024 lidero el equipo detrás de SISOC, que usan ~750 personas del Estado.",
     places: { sisoc: "Plataforma de gobierno - la lidero", shine: "Mi propio SaaS - hecho solo" },
@@ -182,7 +182,6 @@ export const es: Dictionary = {
       release: "release: cada jueves",
       checks: "CI",
       delivery: "Entrega",
-      scrollHint: "Deslizá para seguir el cambio hasta producción →",
       stages: [
         { name: "lint", note: "black, pylint, djlint, encoding" },
         { name: "tests", note: "smoke + pytest, gate de cobertura 75%" },

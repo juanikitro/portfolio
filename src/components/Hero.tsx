@@ -13,7 +13,7 @@ export function Hero({ lang, t }: { lang: Locale; t: Dictionary }) {
       <FlowCanvas />
       <div className="relative mx-auto grid w-full max-w-[1360px] items-end gap-x-12 gap-y-8 px-4 py-14 sm:px-8 lg:grid-cols-[7fr_5fr]">
         <div className="min-w-0 lg:col-span-2">
-          <h1 className="m-0 font-display text-[clamp(2.1rem,6.6vw,5.4rem)] font-black leading-[1.0] tracking-[-0.03em] [overflow-wrap:anywhere]">
+          <h1 className="m-0 font-display text-[clamp(2.1rem,5.6vw,4.9rem)] font-black leading-[1.0] tracking-[-0.03em] [overflow-wrap:anywhere]">
             <span className="rise"><span>{a}</span></span>
             <span className="rise"><span>{b}</span></span>
             <span className="rise text-route"><span>{c}</span></span>
