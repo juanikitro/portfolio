@@ -98,3 +98,31 @@ test("hero leaves a header-sized gap at the bottom of the first screen", async (
   // tall content may push the hero past the minimum; it must never be shorter
   expect(heroBottom).toBeGreaterThanOrEqual(vh - header - 2);
 });
+
+test("header CV button is visible on every screen size and follows the language", async ({ page }) => {
+  for (const [path, file] of [["/", "CV_EN.pdf"], ["/es/sisoc", "CV_ES.pdf"]]) {
+    await page.goto(path);
+    const cv = page.locator("header").getByRole("link", { name: "CV", exact: true });
+    await expect(cv).toBeVisible();
+    expect(await cv.getAttribute("href")).toContain(file);
+  }
+});
+
+test("every page has its own 1200x630 social image, reachable without a redirect", async ({ page, request }) => {
+  for (const path of ["/", "/sisoc", "/shineapp", "/es", "/es/sisoc", "/es/shineapp"]) {
+    await page.goto(path);
+    const url = await page.locator('meta[property="og:image"]').getAttribute("content");
+    expect(url).toMatch(/opengraph-image/);
+    await expect(page.locator('meta[property="og:image:width"]')).toHaveAttribute("content", "1200");
+    await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute("content", "summary_large_image");
+    // the English image lives under /en, which the /en/* redirect must leave alone
+    const res = await request.get(new URL(url!).pathname, { maxRedirects: 0 });
+    expect(res.status()).toBe(200);
+    expect(res.headers()["content-type"]).toBe("image/png");
+  }
+});
+
+test("ShineApp case links to its public repository", async ({ page }) => {
+  await page.goto("/shineapp");
+  await expect(page.locator("main a[href='https://github.com/juanikitro/ShineApp']")).toBeVisible();
+});
