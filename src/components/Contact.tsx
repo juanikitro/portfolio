@@ -22,7 +22,7 @@ export function Contact({ t, lang }: { t: Dictionary; lang: Locale }) {
         <div className="min-w-0">
           <span className="legend">{t.contact.label}</span>
           <h2 id="contact-h" className="mb-3 mt-2 font-display text-[clamp(1.75rem,3.8vw,2.75rem)] font-black leading-[1.05] tracking-[-0.02em]">{t.contact.title}</h2>
-          <p className="m-0 text-ink-2">{t.contact.body}</p>
+          <p className="m-0 text-left text-ink-2">{t.contact.body}</p>
           <div className="mt-6 grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:items-center sm:justify-center md:justify-start">
             <EmailButton email={t.contact.email} label={t.contact.email} copied={t.contact.copied} className={`${BTN} col-span-2`} />
             <a href={cvPath(lang)} target="_blank" rel="noopener noreferrer" className={`${BTN} col-span-2`}>
