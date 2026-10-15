@@ -19,7 +19,8 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/en", destination: "/", permanent: true },
-      { source: "/en/:path*", destination: "/:path*", permanent: true },
+      // social images stay under /en: their generated URLs point there and have no root rewrite
+      { source: "/en/:path((?!(?:.*/)?opengraph-image$).*)", destination: "/:path", permanent: true },
     ];
   },
   async rewrites() {

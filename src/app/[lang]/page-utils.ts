@@ -18,7 +18,8 @@ export function pageMetadata(lang: Locale, route: Route, title: string, descript
       canonical: href(lang, route),
       languages: { en: href("en", route), es: href("es", route), "x-default": href("en", route) },
     },
-    openGraph: { title, description, url: href(lang, route), images: [{ url: "/juan.jpg", width: 460, height: 460, alt: "Juan Ignacio Portilla Kitroser" }] },
-    twitter: { card: "summary", title, description },
+    // the image comes from each route's opengraph-image.tsx
+    openGraph: { title, description, url: href(lang, route) },
+    twitter: { card: "summary_large_image", title, description },
   };
 }
