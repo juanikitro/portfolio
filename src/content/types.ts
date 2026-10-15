@@ -1,11 +1,11 @@
-export type Fact = { label: string; value: string };
+export type Fact = { label: string; value: string; href?: string };
 export type Decision = { title: string; why: string; tradeoff: string; status?: string };
 export type CaseSection = { id: string; label: string; title: string; body: string[] };
 
 export type Dictionary = {
   meta: { title: string; description: string; sisocTitle: string; sisocDescription: string; shineTitle: string; shineDescription: string };
-  nav: { experience: string; contact: string; theme: { toLight: string; toDark: string }; lang: string; langLabel: string; skip: string; home: string };
-  hero: { lines: [string, string, string]; lede: string; sub: string; places: { sisoc: string; shine: string }; mapLabel: string };
+  nav: { experience: string; contact: string; theme: { toLight: string; toDark: string }; lang: string; langLabel: string; skip: string; home: string; cv: string };
+  hero: { lines: [string, string, string]; lede: string; sub: string; facts: string[]; places: { sisoc: string; shine: string }; mapLabel: string };
   work: {
     label: string;
     title: string;
@@ -14,8 +14,9 @@ export type Dictionary = {
     shine: { chips: string[]; body: string; stops: [string, string, string, string] };
   };
   experience: { label: string; title: string; intro: string; sisocCta: string; stackLabel: string; items: { period: string; org: string; role: string; bullets: string[]; stack: string[] }[] };
-  contact: { label: string; title: string; body: string; email: string; copied: string; cv: string };
+  contact: { label: string; title: string; body: string; terms: string[]; termsLabel: string; email: string; copied: string; cv: string };
   footer: { built: string };
+  og: { role: string; open: string };
   caseUi: { facts: string; back: string; next: string; decisionWhy: string; decisionTradeoff: string; decisionsLabel: string; solutionLabel: string; resultLabel: string; storyLabel: string };
   sisoc: {
     eyebrow: string;

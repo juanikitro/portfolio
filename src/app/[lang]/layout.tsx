@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { Overpass, Overpass_Mono, Source_Serif_4 } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { Providers } from "@/components/Providers";
 import { getDictionary } from "@/content";
 import { hasLocale, locales, siteUrl } from "@/i18n";
@@ -53,6 +54,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
       </head>
       <body>
         <Providers>{children}</Providers>
+        <Analytics />
       </body>
     </html>
   );

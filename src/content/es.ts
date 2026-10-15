@@ -20,6 +20,7 @@ export const es: Dictionary = {
     langLabel: "View in English",
     skip: "Ir al contenido",
     home: "Inicio",
+    cv: "CV",
   },
   hero: {
     lines: ["El sistema crece.", "Los requerimientos cambian cada semana.", "Yo lo hago funcionar."],
@@ -27,13 +28,14 @@ export const es: Dictionary = {
     sub: "Desde noviembre de 2024 lidero el equipo detrás de SISOC, que usan ~750 personas del Estado.",
     places: { sisoc: "Plataforma de gobierno - la lidero", shine: "Mi propio SaaS - hecho solo" },
     mapLabel: "Proyectos en este mapa",
+    facts: ["5 años", "Python / Javascript", "Remoto desde Argentina"],
   },
   work: {
     label: "Trabajo seleccionado",
     title: "Dos lugares donde construyo",
     readCase: "Leer el caso",
     sisoc: {
-      chips: ["en producción", "+3 apps de campo", "~750 usuarios activos"],
+      chips: ["en producción", "+3 apps de campo", "~750 usuarios activos", "1.750+ PRs mergeados"],
       body: "Back office de una secretaría nacional de políticas sociales, más tres apps de campo construidas sobre su API. Armé el sistema de ingeniería en el que trabaja el equipo, y reviso y apruebo cada PR y cada deploy.",
       apps: ["Espacios Com.", "DataCalle", "Gestionar"],
     },
@@ -128,12 +130,15 @@ export const es: Dictionary = {
   contact: {
     label: "Contacto",
     title: "Hablemos",
-    body: "Soy software engineer enfocado en backend: Python, Django y DRF, con React y Next.js en el frontend. Diseño, construyo y mantengo sistemas en producción con reglas de negocio complejas, muchas integraciones y exigencias reales de seguridad y trazabilidad, y traduzco necesidades del negocio en software que pueda seguir evolucionando. Uso herramientas de IA todos los días para trabajar más rápido sin bajar la vara. Busco roles remotos de ingeniería backend, full-stack o de producto, trabajando desde Argentina (GMT-3).",
+    body: "Software engineer enfocado en backend: Python, Django y DRF, con React y Next.js en el frontend. Construyo y mantengo sistemas en producción con reglas de negocio complejas y muchas integraciones, y uso herramientas de IA todos los días sin bajar la vara.",
+    termsLabel: "Condiciones",
+    terms: ["Disponible ya - contractor o full-time", "Inglés fluido", "Superposición completa con el horario de la costa este de EE.UU. (GMT-3)"],
     email: "jpkitro@gmail.com",
     copied: "Copiado",
     cv: "Descargar CV",
   },
   footer: { built: "Hecho con Next.js. Diagramas dibujados a mano a partir de los sistemas reales." },
+  og: { role: "Backend engineer", open: "Abierto a roles remotos" },
   caseUi: {
     facts: "De un vistazo",
     back: "Volver al inicio",
@@ -158,6 +163,7 @@ export const es: Dictionary = {
       { label: "Equipo", value: "4 desarrolladores + yo, también como desarrollador y devops" },
       { label: "Stack", value: "Python, Django, DRF, MySQL, React, TypeScript, Docker, GitHub Actions" },
       { label: "Usuarios", value: "~750 personas del Estado, activas" },
+      { label: "Pull requests", value: "1.750+ mergeados desde nov. 2024, ~670 míos" },
       { label: "Estado", value: "En producción - migración en curso" },
     ],
     sections: [
@@ -298,6 +304,7 @@ export const es: Dictionary = {
       { label: "Infra", value: "Vercel + Supabase, presupuesto cero" },
       { label: "Usuarios", value: "1 negocio en producción: The King Shine" },
       { label: "Estado", value: "Desarrollo activo pausado" },
+      { label: "Código", value: "juanikitro/ShineApp en GitHub", href: "https://github.com/juanikitro/ShineApp" },
     ],
     sections: [
       {

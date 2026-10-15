@@ -20,6 +20,7 @@ export const en: Dictionary = {
     langLabel: "Ver en español",
     skip: "Skip to content",
     home: "Home",
+    cv: "CV",
   },
   hero: {
     lines: ["The system grows.", "Requirements change every week.", "I make it work."],
@@ -27,13 +28,14 @@ export const en: Dictionary = {
     sub: "Since November 2024 I've led the team behind SISOC, used by ~750 government staff.",
     places: { sisoc: "Government platform - I lead it", shine: "My own SaaS - built alone" },
     mapLabel: "Projects on this map",
+    facts: ["5 years", "Python / Javascript", "Remote from Argentina"],
   },
   work: {
     label: "Selected work",
     title: "Two places I build in",
     readCase: "Read the case",
     sisoc: {
-      chips: ["in production", "+3 field apps", "~750 active users"],
+      chips: ["in production", "+3 field apps", "~750 active users", "1,750+ merged PRs"],
       body: "Back office for a national social-policy secretariat, plus three field apps built on its API. I set up the engineering system the team works in, and I review and approve every PR and every deploy.",
       apps: ["Espacios Com.", "DataCalle", "Gestionar"],
     },
@@ -128,12 +130,15 @@ export const en: Dictionary = {
   contact: {
     label: "Contact",
     title: "Let's talk",
-    body: "I'm a software engineer focused on backend: Python, Django and DRF, with React and Next.js on the frontend. I design, build and maintain production systems with complex business rules, many integrations and real demands on security and traceability, and I turn business needs into software that can keep evolving. I use AI tools every day to work faster without lowering the bar. I'm looking for remote backend, full-stack or product engineering roles, working from Argentina (GMT-3).",
+    body: "Software engineer focused on backend: Python, Django and DRF, with React and Next.js on the frontend. I build and maintain production systems with complex business rules and many integrations, and I use AI tools every day without lowering the bar.",
+    termsLabel: "Working terms",
+    terms: ["Available now - contractor or full-time", "Fluent English", "Full overlap with US East Coast hours (GMT-3)"],
     email: "jpkitro@gmail.com",
     copied: "Copied",
     cv: "Download CV",
   },
   footer: { built: "Built with Next.js. Diagrams drawn by hand from the real systems." },
+  og: { role: "Backend engineer", open: "Open to remote roles" },
   caseUi: {
     facts: "At a glance",
     back: "Back to home",
@@ -158,6 +163,7 @@ export const en: Dictionary = {
       { label: "Team", value: "4 developers + me, also as a developer and DevOps" },
       { label: "Stack", value: "Python, Django, DRF, MySQL, React, TypeScript, Docker, GitHub Actions" },
       { label: "Users", value: "~750 active government staff" },
+      { label: "Pull requests", value: "1,750+ merged since Nov 2024, ~670 of them mine" },
       { label: "Status", value: "In production - migration in progress" },
     ],
     sections: [
@@ -298,6 +304,7 @@ export const en: Dictionary = {
       { label: "Infra", value: "Vercel + Supabase, zero budget" },
       { label: "Users", value: "1 business in production: The King Shine" },
       { label: "Status", value: "Active development paused" },
+      { label: "Code", value: "juanikitro/ShineApp on GitHub", href: "https://github.com/juanikitro/ShineApp" },
     ],
     sections: [
       {

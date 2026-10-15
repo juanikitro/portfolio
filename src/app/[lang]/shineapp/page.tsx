@@ -25,7 +25,7 @@ export default async function ShineCase({ params }: PageProps<"/[lang]/shineapp"
     <>
       <SiteHeader lang={lang} route="/shineapp" t={t} />
       <main id="main" className="mx-auto grid max-w-[1360px] grid-cols-[minmax(0,1fr)] gap-16 px-4 sm:px-8 md:gap-24">
-        <CaseHero eyebrow={s.eyebrow} title={s.title} intro={s.intro} facts={s.facts} factsLabel={ui.facts} />
+        <CaseHero eyebrow={s.eyebrow} title={s.title} intro={s.intro} facts={s.facts} factsLabel={ui.facts} lang={lang} />
 
         <div className="grid gap-12">
           <TextSections sections={s.sections} />

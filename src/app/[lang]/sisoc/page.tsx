@@ -28,7 +28,7 @@ export default async function SisocCase({ params }: PageProps<"/[lang]/sisoc">) 
     <>
       <SiteHeader lang={lang} route="/sisoc" t={t} />
       <main id="main" className="mx-auto grid max-w-[1360px] grid-cols-[minmax(0,1fr)] gap-16 px-4 sm:px-8 md:gap-24">
-        <CaseHero eyebrow={s.eyebrow} title={s.title} intro={s.intro} facts={s.facts} factsLabel={ui.facts} highlight={CADENCE} />
+        <CaseHero eyebrow={s.eyebrow} title={s.title} intro={s.intro} facts={s.facts} factsLabel={ui.facts} highlight={CADENCE} lang={lang} />
 
         <TextSections sections={s.sections} columns highlight={CADENCE} />
 

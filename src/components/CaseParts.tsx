@@ -2,10 +2,11 @@ import Link from "next/link";
 import type { CaseSection, Decision, Fact } from "@/content/types";
 import { Reveal } from "./Reveal";
 import { RichText } from "./RichText";
+import { TrackedLink } from "./TrackedLink";
 
 export const H2 = "mb-6 mt-2 font-display text-[clamp(1.75rem,3.8vw,2.75rem)] font-extrabold leading-[1.08] tracking-[-0.02em]";
 
-export function CaseHero({ eyebrow, title, intro, facts, factsLabel, highlight }: { eyebrow: string; title: string; intro: string; facts: Fact[]; factsLabel: string; highlight?: string[] }) {
+export function CaseHero({ eyebrow, title, intro, facts, factsLabel, highlight, lang }: { eyebrow: string; title: string; intro: string; facts: Fact[]; factsLabel: string; highlight?: string[]; lang: string }) {
   return (
     <div className="grid grid-cols-[minmax(0,1fr)] gap-10 pb-4 pt-14 md:pt-24 lg:grid-cols-[7fr_5fr] lg:items-end">
       <div className="min-w-0">
@@ -17,7 +18,15 @@ export function CaseHero({ eyebrow, title, intro, facts, factsLabel, highlight }
         {facts.map((f) => (
           <div key={f.label} className="grid grid-cols-[88px_minmax(0,1fr)] gap-3 border-b border-rule py-2.5 last:border-0">
             <dt className="font-mono text-xs uppercase tracking-[0.08em] text-muted">{f.label}</dt>
-            <dd className="m-0 font-display text-[15px]"><RichText text={f.value} highlight={highlight} /></dd>
+            <dd className="m-0 font-display text-[15px]">
+              {f.href ? (
+                <TrackedLink event="repo" from="case" lang={lang} href={f.href} target="_blank" rel="noreferrer" className="transition-colors hover:text-route">
+                  {f.value} ↗
+                </TrackedLink>
+              ) : (
+                <RichText text={f.value} highlight={highlight} />
+              )}
+            </dd>
           </div>
         ))}
       </dl>

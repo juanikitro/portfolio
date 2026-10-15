@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { Dictionary } from "@/content";
-import { href, type Locale, type Route } from "@/i18n";
+import { cvPath, href, type Locale, type Route } from "@/i18n";
 import { ThemeToggle } from "./ThemeToggle";
+import { TrackedLink } from "./TrackedLink";
 
 // Header height is fixed (--header-h) so the hero can size itself against it.
 export function SiteHeader({ lang, route, t }: { lang: Locale; route: Route; t: Dictionary }) {
@@ -27,11 +28,23 @@ export function SiteHeader({ lang, route, t }: { lang: Locale; route: Route; t: 
             ))}
           </nav>
           {/* The name always leads back to the hero: centered on desktop, alone on the left on mobile (no nav there).
-              Between md and lg the nav takes the room. */}
-          <Link href={href(lang)} className="min-w-0 text-[12px] font-black uppercase leading-[1.15] tracking-[0.06em] no-underline transition-colors hover:text-route min-[360px]:truncate min-[360px]:whitespace-nowrap min-[360px]:text-[13px] sm:text-[15px] sm:tracking-[0.08em] md:hidden lg:block">
-            Juan Ignacio Portilla Kitroser
+              On phones it takes two lines so the CV button fits beside it. Between md and lg the nav takes the room. */}
+          <Link href={href(lang)} className="min-w-0 text-[12px] font-black uppercase leading-[1.15] tracking-[0.06em] no-underline transition-colors hover:text-route min-[360px]:text-[13px] sm:truncate sm:whitespace-nowrap sm:text-[15px] sm:tracking-[0.08em] md:hidden lg:block">
+            Juan Ignacio <span className="block sm:inline">Portilla Kitroser</span>
           </Link>
           <div className="flex flex-none items-center justify-end gap-2">
+            {/* The CV is one tap away on every screen size: the hero has no buttons and mobile has no nav. */}
+            <TrackedLink
+              event="cv"
+              from="header"
+              lang={lang}
+              href={cvPath(lang)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="grid h-10 place-items-center rounded-full bg-ink px-3.5 font-display text-sm font-bold text-paper no-underline transition-colors hover:bg-route"
+            >
+              {t.nav.cv}
+            </TrackedLink>
             <ThemeToggle labels={t.nav.theme} />
             <a
               href={href(other, route)}

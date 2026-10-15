@@ -22,6 +22,10 @@ export function Hero({ lang, t }: { lang: Locale; t: Dictionary }) {
         <div className="min-w-0">
           <p className="m-0 max-w-[54ch] whitespace-pre-line font-display text-lg font-semibold text-ink">{t.hero.lede}</p>
           <p className="m-0 mt-2 max-w-[54ch] text-ink-2"><RichText text={t.hero.sub} highlight={["~750"]} /></p>
+          {/* the recruiter scan line: seniority, languages, location */}
+          <p className="m-0 mt-4 inline-block rounded-[10px] border border-rule bg-surface px-3.5 py-1.5 font-mono text-[13px] text-ink sm:rounded-full">
+            {t.hero.facts.join(" - ")}
+          </p>
         </div>
         <nav aria-label={t.hero.mapLabel} className="grid gap-2.5">
           {[
