@@ -29,7 +29,7 @@ export type Dictionary = {
     decisions: Decision[];
     map: { title: string; more: string; legend: { u: string; d: string; i: string; f: string } };
     compare: { before: string; now: string; rows: [string, string][] };
-    pipeline: { title: string; release: string; checks: string; delivery: string; stages: { name: string; note: string; gate?: boolean }[]; deliveryStages: { name: string; note: string; gate?: boolean }[]; scrollHint: string };
+    pipeline: { title: string; release: string; checks: string; delivery: string; stages: { name: string; note: string; gate?: boolean }[]; deliveryStages: { name: string; note: string; gate?: boolean }[] };
     incident: { label: string; title: string; stamp: string; happened: [string, string]; did: [string, string]; changed: [string, string] };
     learnings: { title: string; items: string[] };
   };

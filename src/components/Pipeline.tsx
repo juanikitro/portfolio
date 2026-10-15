@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { animate, motionValue, useMotionValueEvent, useReducedMotion } from "motion/react";
+import * as m from "motion/react-m";
+import { animate, motionValue, useMotionValueEvent, useReducedMotion, useTransform, type MotionValue } from "motion/react";
 import type { Dictionary } from "@/content";
 import { Appear, DrawPath, FadeIn, invSmooth, useDrawProgress } from "./draw";
 
 // How a change reaches production, drawn like the rest of the site: a pull request fans out into
 // the CI jobs (they run in parallel), merges back at my review, then rides the weekly release train
-// through QA and staging to production, where I approve again.
+// through QA and staging to production, where I approve again. On phones it is drawn vertically.
 // It draws itself once when it comes into view (lanes, review, release train). After that the CI lanes
 // keep running: each one paints and unpaints in green on its own random 1–3 s cycle, like jobs that never stop.
 
@@ -27,6 +28,72 @@ function wrap(note: string, max = 16): string[] {
     else lines.push(word);
   }
   return lines;
+}
+
+type Stage = { name: string; note: string; gate?: boolean };
+
+/** A row that fades up when the shared progress reaches `at`. */
+function Row({ progress, at, children, className }: { progress: MotionValue<number>; at: number; children: React.ReactNode; className?: string }) {
+  const opacity = useTransform(progress, [at, at + 0.06], [0, 1]);
+  const y = useTransform(progress, [at, at + 0.06], [8, 0]);
+  return <m.div style={{ opacity, y }} className={className}>{children}</m.div>;
+}
+
+/** Phones: the same pipeline as a vertical line, so nothing scrolls sideways. CI jobs keep painting in and out. */
+function PipelineVertical({ t, checks, review, progress, running }: { t: Dictionary["sisoc"]["pipeline"]; checks: Stage[]; review?: Stage; progress: MotionValue<number>; running: MotionValue<number>[] }) {
+  const ciSpine = useTransform(progress, [0, 0.42], [0, 1]);
+  const deliverySpine = useTransform(progress, [0.46, 0.88], [0, 1]);
+  const stops = t.deliveryStages;
+  return (
+    <div className="px-4 pb-6 pt-4 sm:hidden">
+      <div className="relative pl-10">
+        <m.span aria-hidden="true" className="absolute bottom-2 left-[15px] top-4 w-[3px] origin-top rounded bg-rule" style={{ scaleY: ciSpine }} />
+        <Row progress={progress} at={0} className="relative mb-4 flex min-h-8 items-center">
+          <span className="absolute -left-10 grid size-8 place-items-center rounded-full bg-ink font-mono text-[11px] font-bold text-paper">PR</span>
+          <span className="legend">{t.checks}</span>
+        </Row>
+        <ol className="m-0 grid list-none gap-3 p-0">
+          {checks.map((c, i) => (
+            <Row key={c.name} progress={progress} at={0.04 + (i / checks.length) * 0.34} className="relative">
+              <span aria-hidden="true" className="absolute -left-[30px] top-[7px] size-3 rounded-full border-[3px] border-rule bg-surface" />
+              <div className="flex flex-wrap items-baseline gap-x-2 font-mono">
+                <b className="text-[13px] font-semibold">{c.name}</b>
+                <span className="text-xs text-muted">{c.note}</span>
+              </div>
+              <span aria-hidden="true" className="relative mt-1.5 block h-1 overflow-hidden rounded bg-rule">
+                <m.i className="absolute inset-0 origin-left bg-route" style={{ scaleX: running[i] }} />
+              </span>
+            </Row>
+          ))}
+        </ol>
+        {review && (
+          <Row progress={progress} at={0.42} className="relative mt-5">
+            <span aria-hidden="true" className="absolute -left-[34px] top-0.5 size-5 rounded-[5px] border-4 border-ink bg-surface" />
+            <b className="block font-mono text-[13px] font-bold">{review.name}</b>
+            <span className="font-mono text-xs text-muted">{review.note}</span>
+          </Row>
+        )}
+      </div>
+      <div className="relative mt-6 pl-10">
+        <m.span aria-hidden="true" className="absolute bottom-3 left-[14px] top-1 w-[5px] origin-top rounded bg-route" style={{ scaleY: deliverySpine }} />
+        <Row progress={progress} at={0.46} className="mb-3">
+          <span className="legend">{t.delivery}</span>
+        </Row>
+        <ol className="m-0 grid list-none gap-4 p-0">
+          {stops.map((st, i) => (
+            <Row key={st.name} progress={progress} at={0.5 + (i / stops.length) * 0.36} className="relative">
+              <span
+                aria-hidden="true"
+                className={`absolute top-0.5 border-4 bg-surface ${st.gate ? "-left-[34px] size-5 rounded-[5px] border-ink" : "-left-[33px] size-[18px] rounded-full border-route"}`}
+              />
+              <b className="block font-mono text-[13px] font-bold">{st.name}</b>
+              <span className="font-mono text-xs text-muted">{st.note}</span>
+            </Row>
+          ))}
+        </ol>
+      </div>
+    </div>
+  );
 }
 
 export function Pipeline({ t }: { t: Dictionary["sisoc"]["pipeline"] }) {
@@ -74,8 +141,8 @@ export function Pipeline({ t }: { t: Dictionary["sisoc"]["pipeline"] }) {
         <h3 className="m-0 font-display text-[15px] font-extrabold">{t.title}</h3>
         <span className="font-mono text-[12.5px] text-muted">{t.release}</span>
       </div>
-      <p className="m-0 px-4 pt-3 font-mono text-xs text-muted sm:hidden">{t.scrollHint}</p>
-      <div className="overflow-x-auto p-3 sm:p-5">
+      <PipelineVertical t={t} checks={checks} review={review} progress={progress} running={running} />
+      <div className="hidden overflow-x-auto p-5 sm:block">
         <svg viewBox={`0 0 ${W} 320`} role="img" aria-label={t.title} fill="none" strokeLinecap="round" strokeLinejoin="round" className="block h-auto w-full min-w-[900px] font-mono">
           <text x={LANE_X0} y={top - 22} fontSize="11" letterSpacing="0.08em" style={{ fill: "var(--muted)" }}>{t.checks.toUpperCase()}</text>
 
