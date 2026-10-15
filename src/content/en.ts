@@ -49,13 +49,80 @@ export const en: Dictionary = {
     intro:
       "Public sector, logistics and startups, in Argentina and Europe. APIs, data integrations, infrastructure and the delivery practices around them. The common thread: systems that have to perform in production.",
     sisocCta: "Read the SISOC case",
+    stackLabel: "Technologies",
     items: [
-      { period: "2024 - now", org: "Ministerio de Capital Humano (Argentina)", role: "Technical Lead, before that Full-Stack Developer" },
-      { period: "2024", org: "StockViz (Belgium, remote)", role: "Full-Stack Developer", note: "Django backend and data models; ETL workflows with Apache NiFi." },
-      { period: "2023 - 2024", org: "RapiHogar", role: "DevOps Developer, then consultant", note: "Containerized apps with Docker and helped migrate to Kubernetes on GKE. Ran environments on GCP; set up Sentry." },
-      { period: "2023", org: "Municipalidad de San Miguel", role: "Backend Developer (freelance)", note: "An API connecting two social-services systems to search and match people across both." },
-      { period: "2022 - 2023", org: "MailAmericas", role: "Developer Analyst, then DevOps", note: "Supplier-portal backend in Node.js. Moved six databases to a serverless setup on Azure; CI/CD with GitLab." },
-      { period: "2021 - 2022", org: "Gobierno de la Ciudad de Buenos Aires", role: "Process Analyst, then Backend Developer", note: "Planned and built the Community Action Organizations System (SOAC) with Django." },
+      {
+        period: "2024 - now",
+        org: "Ministerio de Capital Humano (Argentina)",
+        role: "Technical Lead, before that Full-Stack Developer",
+        bullets: [
+          "Lead a team of 4 developers: I set the architecture and engineering standards, and review every PR and every deploy.",
+          "Lead the gradual migration from a monolith to microservices, drawing the domain boundaries.",
+          "Design REST APIs, fine-grained permissions and integrations with external systems for social and identity data.",
+        ],
+        stack: ["Python", "Django", "DRF", "MySQL", "React", "TypeScript", "Docker", "GitHub Actions"],
+      },
+      {
+        period: "2024",
+        org: "StockViz (Belgium, remote)",
+        role: "Full-Stack Developer",
+        bullets: [
+          "Backend logic, endpoints and data models with Django.",
+          "ETL workflows with Apache NiFi to integrate and transform data for analysis and reporting.",
+          "Responsive interfaces with JavaScript, HTML and CSS.",
+        ],
+        stack: ["Python", "Django", "Apache NiFi", "JavaScript"],
+      },
+      {
+        period: "2023 - 2024",
+        org: "RapiHogar",
+        role: "DevOps Developer, then consultant",
+        bullets: [
+          "Containerized the web apps with Docker and helped migrate them to Kubernetes on GKE.",
+          "Ran the development, staging and production environments on GCP, and set up Sentry to investigate incidents.",
+          "As a freelance consultant, supported what I had built.",
+        ],
+        stack: ["Docker", "Kubernetes", "GKE", "GCP", "Sentry"],
+      },
+      {
+        period: "2023",
+        org: "Municipalidad de San Miguel",
+        role: "Backend Developer (freelance)",
+        bullets: [
+          "Designed and built an API connecting two external social-services systems.",
+          "It searches, processes and matches people's records across both systems.",
+        ],
+        stack: ["Python", "FastAPI"],
+      },
+      {
+        period: "2022 - 2023",
+        org: "MailAmericas",
+        role: "Developer Analyst, then DevOps",
+        bullets: [
+          "Supplier-portal backend with Node.js and Express.",
+          "Automated repetitive admin tasks with TypeScript and Selenium.",
+          "Moved six databases to a serverless setup on Azure and automated CI/CD and tests with GitLab.",
+        ],
+        stack: ["Node.js", "Express", "TypeScript", "Selenium", "Azure", "GitLab CI"],
+      },
+      {
+        period: "2021",
+        org: "Arrayan",
+        role: "Frontend Developer (freelance)",
+        bullets: ["Frontend for a human-resources app with React, wired to its API."],
+        stack: ["React", "JavaScript"],
+      },
+      {
+        period: "2021 - 2022",
+        org: "Gobierno de la Ciudad de Buenos Aires",
+        role: "Process Analyst, then Backend Developer",
+        bullets: [
+          "Mapped and documented operational processes to improve them.",
+          "Planned and built the Community Action Organizations System (SOAC) with Django.",
+          "Maintained internal systems.",
+        ],
+        stack: ["Python", "Django"],
+      },
     ],
   },
   contact: {

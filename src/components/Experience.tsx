@@ -69,7 +69,16 @@ export function Experience({ t, sisocHref }: { t: Dictionary["experience"]; siso
                   <span className="font-mono text-xs text-muted">{it.period}</span>
                   <h3 className="m-0 font-display text-lg font-extrabold leading-snug">{it.org}</h3>
                   <p className="m-0 font-display text-[15px] text-ink-2">{it.role}</p>
-                  {it.note && <p className="m-0 mt-1 text-[15.5px]"><RichText text={it.note} highlight={["SOAC", "SISOC"]} /></p>}
+                  <ul className="m-0 mt-2 grid list-disc gap-1 pl-5 text-[15.5px] marker:text-muted">
+                    {it.bullets.map((b) => (
+                      <li key={b}><RichText text={b} highlight={["SOAC", "SISOC"]} /></li>
+                    ))}
+                  </ul>
+                  <ul aria-label={t.stackLabel} className="m-0 mt-2.5 flex list-none flex-wrap gap-1.5 p-0">
+                    {it.stack.map((s) => (
+                      <li key={s} className="whitespace-nowrap rounded-full border border-rule px-2 py-0.5 font-mono text-[11px] sm:px-2.5 sm:text-[11.5px]">{s}</li>
+                    ))}
+                  </ul>
                   {i === 0 && (
                     <Link href={sisocHref} className="mt-1 inline-flex min-h-10 items-center font-mono text-[13px] text-route no-underline hover:underline">
                       {t.sisocCta} →

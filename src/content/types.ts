@@ -13,7 +13,7 @@ export type Dictionary = {
     sisoc: { chips: string[]; body: string; apps: [string, string, string] };
     shine: { chips: string[]; body: string; stops: [string, string, string, string] };
   };
-  experience: { label: string; title: string; intro: string; sisocCta: string; items: { period: string; org: string; role: string; note?: string }[] };
+  experience: { label: string; title: string; intro: string; sisocCta: string; stackLabel: string; items: { period: string; org: string; role: string; bullets: string[]; stack: string[] }[] };
   contact: { label: string; title: string; body: string; email: string; copied: string; cv: string };
   footer: { built: string };
   caseUi: { facts: string; back: string; next: string; decisionWhy: string; decisionTradeoff: string; decisionsLabel: string; solutionLabel: string; resultLabel: string; storyLabel: string };
