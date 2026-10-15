@@ -76,7 +76,14 @@ export function Decisions({ items, why, tradeoff, label, title, highlight }: { i
               {d.status && <span className="whitespace-nowrap rounded-full border border-dev px-2.5 py-0.5 font-mono text-[11px]">{d.status}</span>}
             </div>
             <p className="m-0 text-[15.5px]"><b className="font-mono text-xs uppercase tracking-[0.08em] text-muted">{why} - </b><RichText text={d.why} highlight={highlight} /></p>
-            <p className="m-0 text-[15.5px] text-ink-2"><b className="font-mono text-xs uppercase tracking-[0.08em] text-muted">{tradeoff} - </b><RichText text={d.tradeoff} highlight={highlight} /></p>
+            <p className="m-0 hidden text-[15.5px] text-ink-2 md:block"><b className="font-mono text-xs uppercase tracking-[0.08em] text-muted">{tradeoff} - </b><RichText text={d.tradeoff} highlight={highlight} /></p>
+            <details className="group/tradeoff md:hidden">
+              <summary className="flex min-h-10 cursor-pointer list-none items-center gap-2 font-mono text-xs uppercase tracking-[0.08em] text-muted [&::-webkit-details-marker]:hidden">
+                <span aria-hidden="true" className="inline-block transition-transform group-open/tradeoff:rotate-90">›</span>
+                {tradeoff}
+              </summary>
+              <p className="m-0 text-[15.5px] text-ink-2"><RichText text={d.tradeoff} highlight={highlight} /></p>
+            </details>
           </Reveal>
         ))}
       </ol>
