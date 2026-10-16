@@ -231,6 +231,7 @@ export const en: Dictionary = {
     ],
     map: {
       title: "SISOC as a transit map",
+      description: "User path: Browser → Nginx → Django core (kernel, identity and proxy). The core connects to Ciudadanos, Comedores, VPSL, PAS, VAT, Celiaquía, CDI, CDF, Dispositivos and more programs. External integrations: RENAPER (national identity registry), a field-management system, a ticketing system, Web push, SMTP and Sentry. Team-built field apps: Espacios Comunitarios, DataCalle and Gestionar.",
       more: "and more programs",
       legend: {
         u: "U - User path",

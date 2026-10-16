@@ -361,8 +361,9 @@ export function MetroMap({ t }: { t: Dictionary["sisoc"]["map"] }) {
   return (
     <figure className="m-0">
       <div ref={ref} className="overflow-x-auto rounded-[14px] border border-rule bg-surface p-3 sm:p-6">
-        <svg viewBox={layout.viewBox} fill="none" strokeLinecap="round" strokeLinejoin="round" role="img" aria-labelledby="metro-title" className={"metro mx-auto block h-auto w-full " + layout.svgClass}>
+        <svg viewBox={layout.viewBox} fill="none" strokeLinecap="round" strokeLinejoin="round" role="img" aria-labelledby="metro-title" aria-describedby="metro-description" className={"metro mx-auto block h-auto w-full " + layout.svgClass}>
           <title id="metro-title">{t.title}</title>
+          <desc id="metro-description">{t.description}</desc>
           <path d={layout.water} fill="var(--water)" stroke="none" />
           {layout.river && (
             <text x={layout.river.x} y={layout.river.y} fontSize="9" stroke="none" transform={"rotate(90 " + layout.river.x + " " + layout.river.y + ")"} textAnchor="middle" style={{ fill: "var(--muted)", letterSpacing: ".2em" }}>RÍO DE LA PLATA</text>

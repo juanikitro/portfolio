@@ -22,3 +22,9 @@ npm run test:e2e     # Playwright smoke tests (desktop + mobile) against the bui
 ## Deploy
 
 Set `NEXT_PUBLIC_SITE_URL` to the final domain (used for canonical URLs, sitemap and robots).
+
+## Reading with AI tools
+
+`/llms.txt` links to all six public pages, both CVs and `/llms-full.txt`, which contains the profile, work experience and complete case studies in English and Spanish. Both text resources are generated from `src/content/` at build time; edit the dictionaries rather than maintaining a second copy. The full text includes diagram descriptions, decisions, trade-offs, delivery stages and project status.
+
+Every page links to the reading guide with `rel="describedby"`. The sitemap lists each page in both languages, and `robots.txt` allows crawlers. These resources improve access to the content; they do not guarantee indexing, citation or use by every AI service.

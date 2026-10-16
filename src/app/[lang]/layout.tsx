@@ -50,6 +50,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
     // data-scroll-behavior lets Next turn smooth scrolling off while it scrolls to the top on navigation (Next 16)
     <html lang={lang} data-scroll-behavior="smooth" className={`${overpass.variable} ${overpassMono.variable} ${sourceSerif.variable}`} suppressHydrationWarning>
       <head>
+        <link rel="describedby" href="/llms.txt" type="text/plain" title="Portfolio reading guide" />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         {/* Without JS, content that would animate in must stay visible. */}
         <noscript>

@@ -231,6 +231,7 @@ export const es: Dictionary = {
     ],
     map: {
       title: "SISOC como mapa de subte",
+      description: "Recorrido del usuario: Browser → Nginx → core de Django (kernel, identidad y proxy). El core se conecta con Ciudadanos, Comedores, VPSL, PAS, VAT, Celiaquía, CDI, CDF, Dispositivos y más programas. Integraciones externas: RENAPER (registro nacional de identidad), un sistema de gestión de campo, una ticketera, Web push, SMTP y Sentry. Apps de campo del equipo: Espacios Comunitarios, DataCalle y Gestionar.",
       more: "y más programas",
       legend: {
         u: "U - Recorrido del usuario",
