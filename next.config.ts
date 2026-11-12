@@ -6,6 +6,7 @@ import type { NextConfig } from "next";
 const EN_PATHS = ["", "/sisoc", "/shineapp"];
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {
