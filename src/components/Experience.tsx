@@ -38,7 +38,7 @@ export function Experience({ t, sisocHref }: { t: Dictionary["experience"]; siso
     <section id="experience" aria-labelledby="exp-h" className="scroll-mt-20 pt-16 md:pt-24">
       <span className="legend">{t.label}</span>
       <div className="grid gap-x-14 md:grid-cols-[5fr_7fr]">
-        <div>
+        <div className="md:sticky md:top-[calc(var(--header-h)+env(safe-area-inset-top,0px)+1rem)] md:self-start">
           <h2 id="exp-h" className="mb-4 mt-2 font-display text-[clamp(1.75rem,3.8vw,2.75rem)] font-extrabold leading-[1.08] tracking-[-0.02em]">{t.title}</h2>
           <p className="m-0 max-w-[48ch] text-ink-2">{t.intro}</p>
         </div>
