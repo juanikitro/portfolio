@@ -1,13 +1,11 @@
 "use client";
 
 import { sendGAEvent } from "@next/third-parties/google";
-import { track } from "@vercel/analytics";
 
 export type TrackedEvent = "cv" | "email" | "github" | "linkedin" | "repo";
 
-/** Reports a recruiter action to Vercel Analytics and, where it is loaded (production only), Google Analytics. */
+/** Reports a recruiter action to Google Analytics when enabled in production. */
 export function trackClick(event: TrackedEvent, props: { from: string; lang: string }) {
-  track(event, props); // Pro allows 2 properties per event
   if ("dataLayer" in window) sendGAEvent("event", event, props);
 }
 

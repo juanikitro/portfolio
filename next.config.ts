@@ -6,6 +6,7 @@ import type { NextConfig } from "next";
 const EN_PATHS = ["", "/sisoc", "/shineapp"];
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {
@@ -18,6 +19,7 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      { source: "/:path*", has: [{ type: "host", value: "www.juanikitro.com" }], destination: "https://juanikitro.com/:path*", permanent: true },
       { source: "/en", destination: "/", permanent: true },
       // social images stay under /en: their generated URLs point there and have no root rewrite
       { source: "/en/:path((?!(?:.*/)?opengraph-image$).*)", destination: "/:path", permanent: true },
